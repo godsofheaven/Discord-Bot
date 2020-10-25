@@ -12,7 +12,6 @@ import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
 
 import botCommands.BotInfoCommand;
-import botCommands.HiddenCommands.HiddenCommands;
 import botCommands.botMemberJoin.MemberJoin;
 import lavaPlayer.GuildMusicManager;
 import lavaPlayer.MusicPlayer;
@@ -32,13 +31,12 @@ public class MainMethod {
 			intents.add(GatewayIntent.GUILD_MESSAGES);
 			intents.add(GatewayIntent.GUILD_VOICE_STATES);
 			intents.add(GatewayIntent.GUILD_EMOJIS);
-		JDA jda = JDABuilder.createDefault("NzU3NTE3MzcwNjE2MTg0ODgz.X2hjBw.kVxpB1YsXEv_5iaxV9zzGMApu9c", intents).setStatus(OnlineStatus.DO_NOT_DISTURB).build();
+		JDA jda = JDABuilder.createDefault("NzU3NTE3MzcwNjE2MTg0ODgz.X2hjBw.CnItcdlV0HRhQGHK4fVKSPCRaos", intents).setStatus(OnlineStatus.DO_NOT_DISTURB).build();
 		
 		
 		jda.addEventListener(new MusicPlayer());
 		jda.addEventListener(new MemberJoin());
 		jda.addEventListener(new BotInfoCommand());
-		jda.addEventListener(new HiddenCommands());
 	}
 
 
