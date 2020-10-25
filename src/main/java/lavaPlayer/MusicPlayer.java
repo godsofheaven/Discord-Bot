@@ -9,6 +9,7 @@ import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
+import com.sun.jdi.event.Event;
 
 import botCommands.EmbedCommands;
 import net.dv8tion.jda.api.entities.Guild;
@@ -108,6 +109,7 @@ public class MusicPlayer extends ListenerAdapter{
 					// TODO Auto-generated method stub
 					connectToVoiceFirstChannel(guild.getAudioManager());
 					musicManager.scheduler.queue(track);
+					System.out.println("wow");
 				}
 
 				private static void connectToVoiceFirstChannel(AudioManager audioManager ) {
