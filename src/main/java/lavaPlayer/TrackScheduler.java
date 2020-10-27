@@ -50,4 +50,8 @@ public class TrackScheduler extends AudioEventAdapter {
             nextTrack();
         }
     }
+
+    public void play  (AudioTrack track) {
+        player.playTrack(track);
+    }
 }

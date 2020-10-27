@@ -8,6 +8,7 @@ import botCommands.BotInfoCommand;
 import botCommands.botMemberVoiceCommands.DisconnectMember;
 import botCommands.botMemberJoin.MemberJoinLeave;
 import botCommands.botMemberVoiceCommands.MoveMember;
+import lavaPlayer.LavaPlayerMain;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -26,14 +27,14 @@ public class MainMethod {
 			intents.add(GatewayIntent.GUILD_VOICE_STATES);
 			intents.add(GatewayIntent.GUILD_EMOJIS);
 
-		JDA jda = JDABuilder.createDefault("YOUR_TOKEN", intents).setStatus(OnlineStatus.DO_NOT_DISTURB).build();
+		JDA jda = JDABuilder.createDefault("NzU3NTE3MzcwNjE2MTg0ODgz.X2hjBw.04Xe4TCC228j6g1M4W00uSLhVMI", intents).setStatus(OnlineStatus.DO_NOT_DISTURB).build();
 
 
 		jda.addEventListener(new MoveMember());
 		jda.addEventListener(new DisconnectMember());
 		jda.addEventListener(new MemberJoinLeave());
 		jda.addEventListener(new BotInfoCommand());
-		
+		jda.addEventListener(new LavaPlayerMain());
 	}
 
 
