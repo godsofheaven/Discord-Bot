@@ -16,7 +16,9 @@
 			<artifactId>JDA</artifactId>
 			<version>4.2.0_210</version>
 		</dependency>
-	
+
+
+
 
 	</dependencies>
 	
@@ -25,11 +27,11 @@
 			<id>jcenter</id>
 			<name>jcenter-bintray</name>
 			<url>https://jcenter.bintray.com</url>
-		
+
 
 		</repository>
-		
-	   
+
+
 	</repositories>
 
 
