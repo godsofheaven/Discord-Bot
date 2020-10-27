@@ -64,8 +64,10 @@ public class BotInfoCommand extends ListenerAdapter {
 							).queue(m -> m.delete().queueAfter(5, TimeUnit.SECONDS));
 				}
 				else if (message.equalsIgnoreCase("!help")) {
-					channel.sendMessage(botCommands.EmbedCommands.texts(Color.WHITE, "> Useful Commands", "Type the Following Commands",
-							"dds", false).build()).queue();
+					channel.sendMessage(botCommands.EmbedCommands.texts(Color.WHITE, "> Useful Commands",
+							"Type the Following Commands",
+							"`!disconnect me` - disconnect yourself in the voice channel using the bot`",
+							false).build()).queue();
 					
 				}
 				

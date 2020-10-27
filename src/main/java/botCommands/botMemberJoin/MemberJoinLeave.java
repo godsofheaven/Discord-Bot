@@ -8,8 +8,8 @@ import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
-public class MemberJoin extends ListenerAdapter {
-	
+public class MemberJoinLeave extends ListenerAdapter {
+	EmbedBuilder build = new EmbedBuilder();
 	
 	@Override
 	public void onGuildMemberJoin(GuildMemberJoinEvent event) {
@@ -27,6 +27,7 @@ public class MemberJoin extends ListenerAdapter {
 	
 	
 	}
-	
+
+
 
 }
