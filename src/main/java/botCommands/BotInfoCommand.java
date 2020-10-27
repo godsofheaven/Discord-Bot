@@ -43,22 +43,15 @@ public class BotInfoCommand extends ListenerAdapter {
 					).queue(m -> m.delete().queueAfter(5, TimeUnit.SECONDS));
 					case "!underlinebolditalic" -> channel.sendMessage(EmbedCommands.textsEmbedMessage(Color.DARK_GRAY,
 							"```put  '__***' before and after your text```")
-<<<<<<< HEAD
+
 							).queue(m -> m.delete().queueAfter(5, TimeUnit.SECONDS));
 				}
 				else if (message.equalsIgnoreCase("!help")) {
 					channel.sendMessage(botCommands.EmbedCommands.texts(Color.WHITE, "> Useful Commands",
 							"Type the Following Commands",
 							"`!disconnect me` - disconnect yourself in the voice channel using the bot`",
-							false).build()).queue();
-					
-=======
-					).queue(m -> m.delete().queueAfter(5, TimeUnit.SECONDS));
-					case "!help" -> channel.sendMessage(EmbedCommands.texts(Color.WHITE, "> Useful Commands", "Type the Following Commands",
-							"dds", false).build()).queue();
->>>>>>> upstream/main
-				}
-				
+							false).build()).queue(m -> m.delete().queueAfter(5, TimeUnit.SECONDS));
+
 			
 }	
 }
