@@ -26,9 +26,9 @@ public class MainMethod {
 			intents.add(GatewayIntent.GUILD_VOICE_STATES);
 			intents.add(GatewayIntent.GUILD_EMOJIS);
 
-		JDA jda = JDABuilder.createDefault("NzU3NTE3MzcwNjE2MTg0ODgz.X2hjBw.vrxUiEmFjqr4VCiwqmU04w3FOq0", intents).setStatus(OnlineStatus.DO_NOT_DISTURB).build();
+		JDA jda = JDABuilder.createDefault("YOUR_TOKEN", intents).setStatus(OnlineStatus.DO_NOT_DISTURB).build();
 
-		
+
 		jda.addEventListener(new MoveMember());
 		jda.addEventListener(new DisconnectMember());
 		jda.addEventListener(new MemberJoinLeave());
