@@ -15,7 +15,7 @@ public class DisconnectMember extends ListenerAdapter {
         String disconnectJoinedMessage = String.join(",", disconnectMessage);
             if (disconnectMessage.length == 1 && disconnectJoinedMessage.equalsIgnoreCase("!disconnect me")) {
                 event.getGuild().kickVoiceMember(memberToBeDisconnected).queue();
-                event.getChannel().sendMessage("wow works").queue();
+                event.getChannel().sendMessage("YOU HAVE BEEN DISCONNECTED IN THE VOICE CHANNEL").queue();
             }
 
     }
