@@ -1,11 +1,11 @@
-package botCommands.main;
+package main;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.security.auth.login.LoginException;
 import botCommands.BotInfoCommand;
-import botCommands.botMemberJoin.MemberJoin;
-import lavaPlayer.MusicPlayer;
+import botCommands.botDisconnectMemberVoice.DisconnectMember;
+import botCommands.botMemberJoin.MemberJoinLeave;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -22,12 +22,12 @@ public class MainMethod {
 			intents.add(GatewayIntent.GUILD_VOICE_STATES);
 			intents.add(GatewayIntent.GUILD_EMOJIS);
 
-		JDA jda = JDABuilder.createDefault("YOUR_TOKEN_HERE", intents).setStatus(OnlineStatus.DO_NOT_DISTURB).build();
+		JDA jda = JDABuilder.createDefault("YOUR_BOT_TOKEN_HERE", intents).setStatus(OnlineStatus.DO_NOT_DISTURB).build();
 
 		
 		
-		jda.addEventListener(new MusicPlayer());
-		jda.addEventListener(new MemberJoin());
+		jda.addEventListener(new DisconnectMember());
+		jda.addEventListener(new MemberJoinLeave());
 		jda.addEventListener(new BotInfoCommand());
 		
 	}
