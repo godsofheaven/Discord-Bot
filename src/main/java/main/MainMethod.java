@@ -9,6 +9,7 @@ import botCommands.botMemberVoiceCommands.DisconnectMember;
 import botCommands.botMemberJoin.MemberJoinLeave;
 import botCommands.botMemberVoiceCommands.MoveMember;
 import botCommands.botProfanityFilter.ProfanityFilter;
+import embedBuilders.EmbedCommands;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -35,7 +36,7 @@ public class MainMethod {
 		jda.addEventListener(new MemberJoinLeave());
 		jda.addEventListener(new BotInfoCommand());
 		jda.addEventListener(new ProfanityFilter());
-		jda.addEventListener(new Embed());
+		jda.addEventListener(new EmbedCommands());
 	}
 
 
