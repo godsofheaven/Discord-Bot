@@ -1,0 +1,26 @@
+//Just a basic template to get started. Ignore this if you're familiar with the working.
+import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
+
+
+import javax.security.auth.login.LoginException;
+
+public class Main extends ListenerAdapter {
+    public static void main (String[] args) throws LoginException {
+        JDABuilder builder = JDABuilder.createDefault("Your_Token_Here");
+        builder.addEventListeners(new Main());
+        builder.build();
+    }
+
+    @Override
+    public void onMessageReceived(MessageReceivedEvent event)
+    {
+        System.out.println("We recieved a message from "+ event.getAuthor().getName() + ":" + event.getMessage().getContentDisplay());
+
+        if(event.getMessage().getContentRaw().matches("Bye"))
+        {
+            event.getChannel().sendMessage("Good Night").queue();
+        }
+    }
+}
