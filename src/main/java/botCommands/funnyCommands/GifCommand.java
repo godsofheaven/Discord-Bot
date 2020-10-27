@@ -11,7 +11,7 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import java.util.List;
 
 public class GifCommand extends BaseCommand {
-    static String API_KEY = "50PbwJnMAX3KPj2DmV4RJgeaeddQVgmB";
+    static String API_KEY = "token";
 
     Giphy giphy = new Giphy(API_KEY);
 
