@@ -35,6 +35,7 @@ public class MainMethod {
 		jda.addEventListener(new MemberJoinLeave());
 		jda.addEventListener(new BotInfoCommand());
 		jda.addEventListener(new ProfanityFilter());
+		jda.addEventListener(new Embed());
 	}
 
 
