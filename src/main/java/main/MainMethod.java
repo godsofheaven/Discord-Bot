@@ -28,8 +28,7 @@ public class MainMethod {
 
 		JDA jda = JDABuilder.createDefault("NzU3NTE3MzcwNjE2MTg0ODgz.X2hjBw.vrxUiEmFjqr4VCiwqmU04w3FOq0", intents).setStatus(OnlineStatus.DO_NOT_DISTURB).build();
 
-		SnowflakeCacheView<VoiceChannel> voiceChannels = jda.getVoiceChannelCache();
-		voiceChannels.spliterator();
+		
 		jda.addEventListener(new MoveMember());
 		jda.addEventListener(new DisconnectMember());
 		jda.addEventListener(new MemberJoinLeave());
