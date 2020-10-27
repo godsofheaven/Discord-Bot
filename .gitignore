@@ -1,11 +1,9 @@
 src/test/
 .settings/
 target/
-.classpath
 .project
 Endveous/
 bin/
-<<<<<<< HEAD
 .idea/
 bot.discord.iml
 .godsofheaven_basic_bot_template

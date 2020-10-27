@@ -4,6 +4,8 @@ import com.sedmelluq.discord.lavaplayer.player.AudioLoadResultHandler;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
+import com.sedmelluq.discord.lavaplayer.source.youtube.DefaultYoutubeLinkRouter;
+import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager;
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
@@ -23,13 +25,14 @@ public class LavaPlayerMain extends ListenerAdapter {
     private final Map<Long, GuildMusicManager> musicManagers;
 
 
-
     public LavaPlayerMain() {
         this.musicManagers = new HashMap<>();
-
         this.playerManager = new DefaultAudioPlayerManager();
+        playerManager.registerSourceManager(new YoutubeAudioSourceManager());
         AudioSourceManagers.registerRemoteSources(playerManager);
         AudioSourceManagers.registerLocalSource(playerManager);
+
+
     }
 
     private synchronized GuildMusicManager getGuildAudioPlayer(Guild guild) {
@@ -55,6 +58,15 @@ public class LavaPlayerMain extends ListenerAdapter {
         } else if ("~skip".equals(command[0])) {
             skipTrack(event.getChannel());
         }
+          else if ("~pause".equals(command[0])) {
+              pauseTrack(event.getChannel());
+        }
+          else if ("~resume".equals(command[0])) {
+              resumeTrack(event.getChannel());
+        }
+          else if ("~stop".equals(command[0])) {
+                stopTrack(event.getChannel());
+        }
 
         super.onGuildMessageReceived(event);
     }
@@ -68,6 +80,7 @@ public class LavaPlayerMain extends ListenerAdapter {
                 channel.sendMessage("Adding to queue " + track.getInfo().title).queue();
 
                 play(channel.getGuild(), musicManager, track);
+
             }
 
             @Override
@@ -81,6 +94,7 @@ public class LavaPlayerMain extends ListenerAdapter {
                 channel.sendMessage("Adding to queue " + firstTrack.getInfo().title + " (first track of playlist " + playlist.getName() + ")").queue();
 
                 play(channel.getGuild(), musicManager, firstTrack);
+
             }
 
             @Override
@@ -99,7 +113,8 @@ public class LavaPlayerMain extends ListenerAdapter {
         connectToFirstVoiceChannel(guild.getAudioManager());
 
         musicManager.scheduler.queue(track);
-        musicManager.scheduler.play(track);
+        musicManager.scheduler.resumeTrack();
+
     }
 
     private void skipTrack(TextChannel channel) {
@@ -108,6 +123,28 @@ public class LavaPlayerMain extends ListenerAdapter {
 
         channel.sendMessage("Skipped to next track.").queue();
     }
+
+    private void pauseTrack (TextChannel channel){
+        GuildMusicManager musicManager = getGuildAudioPlayer(channel.getGuild());
+        musicManager.scheduler.pauseTrack();
+
+        channel.sendMessage("Paused current track").queue();
+    }
+    private void resumeTrack (TextChannel channel) {
+        GuildMusicManager musicManager = getGuildAudioPlayer(channel.getGuild());
+        musicManager.scheduler.resumeTrack();
+
+        channel.sendMessage("Resumed paused track").queue();
+
+    }
+    private void stopTrack (TextChannel channel) {
+        GuildMusicManager musicManager = getGuildAudioPlayer(channel.getGuild());
+        musicManager.scheduler.stopTrack();
+
+        channel.sendMessage("Track was stopped");
+    }
+
+
 
     private static void connectToFirstVoiceChannel(AudioManager audioManager) {
         if (!audioManager.isConnected()) {
