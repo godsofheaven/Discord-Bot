@@ -5,6 +5,7 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
 
+
 public class DisconnectMember extends ListenerAdapter {
 
     @Override
@@ -14,8 +15,9 @@ public class DisconnectMember extends ListenerAdapter {
         String[] disconnectMessage = event.getMessage().getContentRaw().split(" ", 1);
         String disconnectJoinedMessage = String.join(",", disconnectMessage);
             if (disconnectMessage.length == 1 && disconnectJoinedMessage.equalsIgnoreCase("!disconnect me")) {
+                assert memberToBeDisconnected != null;
                 event.getGuild().kickVoiceMember(memberToBeDisconnected).queue();
-                event.getChannel().sendMessage("YOU HAVE BEEN DISCONNECTED IN THE VOICE CHANNEL").queue();
+                event.getChannel().sendMessage("YOU HAVE BEEN DISCONNECTED FROM THE VOICE CHANNEL").queue();
             }
 
     }
