@@ -1,6 +1,8 @@
 # Discord-Bot
-Hello reddit users!
+A discord-bot which is being developed incrementally with new features.
 
-For proper coordination and to avoid confusion I would recommend everyone to fork this project and then send a pull request if you've added any features.
+I would recommend everyone to fork this project and then send a pull request if you've added any features.
 All the discussion will happen through discord.
 Happy learning and enjoy!
+
+
