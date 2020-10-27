@@ -1,12 +1,12 @@
 package botCommands.botMemberJoin;
 
-import java.awt.Color;
-import java.util.concurrent.TimeUnit;
-
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+
+import java.awt.*;
+import java.util.concurrent.TimeUnit;
 
 public class MemberJoinLeave extends ListenerAdapter {
 	EmbedBuilder build = new EmbedBuilder();

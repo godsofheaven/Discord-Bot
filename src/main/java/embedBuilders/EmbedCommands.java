@@ -1,8 +1,9 @@
 package embedBuilders;
 
-import java.awt.Color;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageEmbed;
+
+import java.awt.*;
 
 public class EmbedCommands {
 
