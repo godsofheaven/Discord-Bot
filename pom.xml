@@ -17,11 +17,7 @@
 			<version>4.2.0_210</version>
 		</dependency>
 	
-	 <dependency>
-        	<groupId>com.github.FredBoat</groupId>
-       	 	<artifactId>Lavalink-Client</artifactId>
-       		 <version>x.y.z</version>
-   		 </dependency>
+
 	</dependencies>
 	
 	<repositories>
@@ -30,10 +26,7 @@
 			<name>jcenter-bintray</name>
 			<url>https://jcenter.bintray.com</url>
 		
-		<repository>
-       		 <id>jitpack.io</id>
-       		<url>https://jitpack.io</url>
-    		</repository>
+
 		</repository>
 		
 	   
