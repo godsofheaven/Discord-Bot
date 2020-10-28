@@ -1,8 +1,5 @@
 package botCommands.funnyCommands;
 
-import at.mukprojects.giphy4j.Giphy;
-import at.mukprojects.giphy4j.entity.search.SearchRandom;
-import at.mukprojects.giphy4j.exception.GiphyException;
 import botCommands.BaseCommand;
 import botCommands.CommandCategory;
 import net.dv8tion.jda.api.entities.Guild;
@@ -10,8 +7,12 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 import java.util.List;
 
+import at.mukprojects.giphy4j.Giphy;
+import at.mukprojects.giphy4j.entity.search.SearchRandom;
+import at.mukprojects.giphy4j.exception.GiphyException;
+
 public class GifCommand extends BaseCommand {
-    static String API_KEY = "token";
+    static String API_KEY = "dc6zaTOxFJmzCdc6zaTOxFJmzC";
 
     Giphy giphy = new Giphy(API_KEY);
 

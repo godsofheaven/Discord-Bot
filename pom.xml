@@ -18,7 +18,11 @@
 		</dependency>
 
 
-
+<dependency>
+		<groupId>at.mukprojects</groupId>
+		<artifactId>giphy4j</artifactId>
+		<version>1.0.1</version>
+	</dependency>
 
 	</dependencies>
 	

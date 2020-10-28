@@ -9,6 +9,8 @@ import botCommands.botMemberVoiceCommands.DisconnectMember;
 import botCommands.botMemberJoin.MemberJoinLeave;
 import botCommands.botMemberVoiceCommands.MoveMember;
 import botCommands.botProfanityFilter.ProfanityFilter;
+import botCommands.funnyCommands.GifCommand;
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -27,7 +29,7 @@ public class MainMethod {
 			intents.add(GatewayIntent.GUILD_VOICE_STATES);
 			intents.add(GatewayIntent.GUILD_EMOJIS);
 
-		JDA jda = JDABuilder.createDefault("YOUR_TOKEN", intents).setStatus(OnlineStatus.DO_NOT_DISTURB).build();
+		JDA jda = JDABuilder.createDefault("NzcwMDk1NjMyMjc4MjI0OTA3.X5Ylcg.m1KdWbSHR3feJ4d6XOISaQGTSFA", intents).setStatus(OnlineStatus.DO_NOT_DISTURB).build();
 
 
 		jda.addEventListener(new MoveMember());
@@ -35,8 +37,12 @@ public class MainMethod {
 		jda.addEventListener(new MemberJoinLeave());
 		jda.addEventListener(new BotInfoCommand());
 		jda.addEventListener(new ProfanityFilter());
-		jda.addEventListener(new Embed());
+	
 	}
+
+	// public static GifCommand getInstance() {
+	// 	return null;
+	// }
 
 
 }

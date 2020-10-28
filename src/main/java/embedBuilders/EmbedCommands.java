@@ -44,10 +44,10 @@ public class EmbedCommands {
 				}
 				builder.addField(name, finalMsg, false);
 			}
-			if (channel instanceof TextChannel) {
-				builder.setFooter(((TextChannel) channel).getGuild().getName() + " - " + MainMethod.getInstance().getName(),
-						((TextChannel) channel).getGuild().getIconUrl());
-			}
+			// if (channel instanceof TextChannel) {
+			// 	builder.setFooter(((TextChannel) channel).getGuild().getName() + " - " + MainMethod.getInstance().getName(),
+			// 			((TextChannel) channel).getGuild().getIconUrl());
+			// }
 			return builder;
 		}
 }
