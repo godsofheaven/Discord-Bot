@@ -4,6 +4,7 @@ import botCommands.BotInfoCommand;
 import botCommands.botMemberJoin.MemberJoinLeave;
 import botCommands.botMemberVoiceCommands.DisconnectMember;
 import botCommands.botMemberVoiceCommands.MoveMember;
+import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import lavaPlayer.LavaPlayerMain;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -16,7 +17,8 @@ import java.util.Collection;
 
 public class MainMethod {
 
-	public static void main(String[] args) throws LoginException {
+
+    public static void main(String[] args) throws LoginException {
 		Collection<GatewayIntent> intents = new ArrayList<GatewayIntent>();
 
 			intents.add(GatewayIntent.GUILD_MEMBERS);
