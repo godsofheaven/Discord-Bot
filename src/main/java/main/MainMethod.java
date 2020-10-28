@@ -26,7 +26,7 @@ public class MainMethod {
 			intents.add(GatewayIntent.GUILD_VOICE_STATES);
 			intents.add(GatewayIntent.GUILD_EMOJIS);
 
-		JDA jda = JDABuilder.createDefault("NzU3NTE3MzcwNjE2MTg0ODgz.X2hjBw._ZAKgLoscmCNz4JC6LCAdCHChvw", intents)
+		JDA jda = JDABuilder.createDefault("YOUR_TOKEN_HERE", intents)
 				.setStatus(OnlineStatus.DO_NOT_DISTURB).build();
 
 
