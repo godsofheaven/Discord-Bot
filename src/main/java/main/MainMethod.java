@@ -29,7 +29,7 @@ public class MainMethod {
 			intents.add(GatewayIntent.GUILD_VOICE_STATES);
 			intents.add(GatewayIntent.GUILD_EMOJIS);
 
-		JDA jda = JDABuilder.createDefault("YOUR_TOKEN_HERE", intents)
+		JDA jda = JDABuilder.createDefault("", intents)
 				.setStatus(OnlineStatus.DO_NOT_DISTURB).build();
 
 		jda.addEventListener(new PingCommand());
@@ -39,7 +39,7 @@ public class MainMethod {
 		jda.addEventListener(new BotInfoCommand());
 		jda.addEventListener(new YoutubeSearch());
 		jda.addEventListener(new ProfanityFilter());
-		jda.addEventListener(new EmbedCommands());
+		//jda.addEventListener(new EmbedCommands());
 	}
 
 

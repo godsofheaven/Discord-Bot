@@ -4,34 +4,44 @@ import java.awt.Color;
 import java.util.List;
 
 import botCommands.funnyCommands.GifCommand;
+import botCommands.funnyCommands.RollCommand;
 import main.MainMethod;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.entities.TextChannel;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f3a8657833078d551914783302a18be117ed4fa6
 public class EmbedCommands {
 
 		static EmbedBuilder embed = new EmbedBuilder();
-	
+
 		public EmbedBuilder texts(Color color, String description, String name, String value, boolean inline) {
-		embed.clearFields();
-		return new EmbedBuilder(embed).setColor(color).setDescription(description).addField(name, value, inline);
+			embed.clearFields();
+			return new EmbedBuilder(embed).setColor(color).setDescription(description).addField(name, value, inline);
 		}
-		
+
 		public MessageEmbed textsEmbedMessage(Color color, String description ) {
 			embed.clearFields();
 			return new EmbedBuilder(embed).setColor(color).setTitle("> MARKDOWN COMMAND").setDescription(description).build();
-		
+
 		}
 
+		public String textString(String str){
+			embed.clearFields();
+			return str;
+		}
 		public GifCommand gifTextMessage(){
-				embed.clearFields();
-				return new GifCommand();
-			}
+			embed.clearFields();
+			return new GifCommand();
+		}
 
-		public static EmbedBuilder noFieldMessageEmbed(String name, List<String> msgs, MessageChannel channel) {
-			return noFieldMessageEmbed(name, msgs, new Color(52, 128, 235), channel);
+		public String rollDice(){
+			embed.clearFields();
+			return new RollCommand().run();
 		}
 
 		public static EmbedBuilder noFieldMessageEmbed(String name, List<String> msgs, Color color, MessageChannel channel) {
