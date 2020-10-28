@@ -23,11 +23,15 @@ public class LavaPlayerMain extends ListenerAdapter {
 
     private final AudioPlayerManager playerManager;
     private final Map<Long, GuildMusicManager> musicManagers;
+    private final DefaultYoutubeLinkRouter youtubeLinkRouter;
+
+
 
 
     public LavaPlayerMain() {
         this.musicManagers = new HashMap<>();
         this.playerManager = new DefaultAudioPlayerManager();
+        this.youtubeLinkRouter = new DefaultYoutubeLinkRouter();
         playerManager.registerSourceManager(new YoutubeAudioSourceManager());
         AudioSourceManagers.registerRemoteSources(playerManager);
         AudioSourceManagers.registerLocalSource(playerManager);
@@ -53,8 +57,8 @@ public class LavaPlayerMain extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] command = event.getMessage().getContentRaw().split(" ", 2);
 
-        if ("~play".equals(command[0]) && command.length == 2) {
-            loadAndPlay(event.getChannel(), command[1]);
+        if ("~playyt".equals(command[0]) && command.length == 2) {
+            loadAndPlay(event.getChannel(), "ytsearch:" + command[1]);
         } else if ("~skip".equals(command[0])) {
             skipTrack(event.getChannel());
         }
@@ -64,12 +68,15 @@ public class LavaPlayerMain extends ListenerAdapter {
           else if ("~resume".equals(command[0])) {
               resumeTrack(event.getChannel());
         }
-          else if ("~stop".equals(command[0])) {
-                stopTrack(event.getChannel());
+          else if ("~stop".equals(command[0]) && "music".equals(command[1])) {
+                stopMusic(event.getChannel(),event.getGuild(), event.getGuild().getAudioManager());
+        }
+          else if ("~stop".equals(command[0]) && "track".equals(command[1])) {
+                stopTrack(event.getChannel(), event.getGuild(), event.getGuild().getAudioManager());
         }
 
         super.onGuildMessageReceived(event);
-    }
+              }
 
     private void loadAndPlay(final TextChannel channel, final String trackUrl) {
         GuildMusicManager musicManager = getGuildAudioPlayer(channel.getGuild());
@@ -121,6 +128,7 @@ public class LavaPlayerMain extends ListenerAdapter {
         GuildMusicManager musicManager = getGuildAudioPlayer(channel.getGuild());
         musicManager.scheduler.nextTrack();
 
+
         channel.sendMessage("Skipped to next track.").queue();
     }
 
@@ -137,23 +145,31 @@ public class LavaPlayerMain extends ListenerAdapter {
         channel.sendMessage("Resumed paused track").queue();
 
     }
-    private void stopTrack (TextChannel channel) {
+    private void stopTrack (TextChannel channel,Guild guild, AudioManager manager) {
         GuildMusicManager musicManager = getGuildAudioPlayer(channel.getGuild());
         musicManager.scheduler.stopTrack();
 
-        channel.sendMessage("Track was stopped");
+        channel.sendMessage("Stopped current track").queue();
+
     }
 
+
+    private void stopMusic (TextChannel channel,Guild guild, AudioManager manager) {
+        GuildMusicManager musicManager = getGuildAudioPlayer(channel.getGuild());
+        musicManager.scheduler.stopTrack();
+        manager.closeAudioConnection();
+        channel.sendMessage("Music was stopped").queue();
+
+    }
 
 
     private static void connectToFirstVoiceChannel(AudioManager audioManager) {
         if (!audioManager.isConnected()) {
-            for (VoiceChannel voiceChannel : audioManager.getGuild().getVoiceChannels()) {
-                audioManager.openAudioConnection(voiceChannel);
-                break;
-            }
+            VoiceChannel musicRoom = audioManager.getGuild().getVoiceChannelById("770847474700779541");
+            audioManager.openAudioConnection(musicRoom);
         }
     }
-
-
 }
+
+
+
