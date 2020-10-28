@@ -9,50 +9,60 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.regex.Pattern;
 
 public class RollCommand extends BaseCommand {
-    private CommandCategory category;
-
-    public RollCommand(CommandCategory category) {
-        this.category = category;
-    }
-
-    public int RollCommand() {
-        Random random = new Random();
-        return (random.nextInt(100) + 1);
-    }
+    Random rng;
+    Pattern dice = Pattern.compile("(\\d+)d(\\d+)\\+?(\\d+)?");
 
     @Override
-    public void run(GuildMessageReceivedEvent e, List<String> args) {
-        Random rand = new Random();
-
-        List<String> msgs = new ArrayList<>();
-        msgs.add("\uD83C\uDFB2 You rolled the dice and got " + (rand.nextInt(100) + 1));
-        e.getChannel().sendMessage(EmbedCommands.noFieldMessageEmbed("Dice Rolled", msgs, e.getChannel()).build()).queue();
-    }
-
-    @Override
-    public String[] getAliases() {
-        return null;
+    public String run() {
+        rng = new Random();
+        return String.format("You rolled %d", rng.nextInt());
     }
 
     @Override
     public String getName() {
-        return "Roll";
-    }
-
-    @Override
-    public String getDescription() {
-        return "Returns a random number from 1 to 100!";
+        return "roll a dice";
     }
 
     @Override
     public String getUsage(Guild guild) {
-        return getName().toLowerCase();
+        return "!roll";
+    }
+
+    @Override
+    public String getDescription() {
+        return "if you ever need a random number";
+    }
+
+
+    @Override
+    public String[] getAliases() {
+        return new String[]{
+                "dice",
+                "rng"
+        };
     }
 
     @Override
     public CommandCategory getParentCategory() {
-        return category;
+        return null;
+    }
+
+
+    public String multiDice(int dices, int sides, int bonus) {
+        String text = String.format("Rolling %s x %s-sided dice: ", dices, sides);
+        int total = 0;
+        for (int i = 0; i < dices; i++) {
+            int roll = rng.nextInt(sides) + 1;
+            text += " " + roll;
+            total += roll;
+        }
+        if (bonus != 0) {
+            text += " adding " + bonus;
+            total += bonus;
+        }
+        return text + " Total: **" + total + "**";
     }
 }
