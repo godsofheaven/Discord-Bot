@@ -1,6 +1,7 @@
 package lavaPlayer;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioLoadResultHandler;
+import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
@@ -22,6 +23,7 @@ public class YoutubeSearch extends ListenerAdapter {
 
     private final AudioPlayerManager playerManager;
     private final Map<Long, GuildMusicManager> musicManagers;
+    private final AudioPlayer player;
 
 
     public YoutubeSearch() {
@@ -30,7 +32,7 @@ public class YoutubeSearch extends ListenerAdapter {
         playerManager.registerSourceManager(new YoutubeAudioSourceManager());
         AudioSourceManagers.registerRemoteSources(playerManager);
         AudioSourceManagers.registerLocalSource(playerManager);
-
+        this.player = playerManager.createPlayer();
 
     }
 
@@ -54,6 +56,7 @@ public class YoutubeSearch extends ListenerAdapter {
 
         if ("~playyt".equals(command[0]) && command.length == 2) {
             loadAndPlay(event.getChannel(), "ytsearch:" + command[1]);
+            //player.setVolume(//i);
         } else if ("~skip".equals(command[0])) {
             skipTrack(event.getChannel());
         }
@@ -69,6 +72,7 @@ public class YoutubeSearch extends ListenerAdapter {
           else if ("~stop".equals(command[0]) && "track".equals(command[1])) {
                 stopTrack(event.getChannel());
         }
+        //  else if ("~set".equals(command[))
 
         super.onGuildMessageReceived(event);
               }
@@ -83,6 +87,7 @@ public class YoutubeSearch extends ListenerAdapter {
 
                 play(channel.getGuild(), musicManager, track);
 
+
             }
 
             @Override
@@ -96,6 +101,7 @@ public class YoutubeSearch extends ListenerAdapter {
                 channel.sendMessage("Adding to queue " + firstTrack.getInfo().title + " (first track of playlist " + playlist.getName() + ")").queue();
 
                 play(channel.getGuild(), musicManager, firstTrack);
+
 
 
             }
@@ -117,6 +123,9 @@ public class YoutubeSearch extends ListenerAdapter {
 
         musicManager.scheduler.queue(track);
         musicManager.scheduler.resumeTrack();
+
+
+
 
     }
 
@@ -156,7 +165,12 @@ public class YoutubeSearch extends ListenerAdapter {
         manager.closeAudioConnection();
         channel.sendMessage("Music was stopped").queue();
 
+
+
+
     }
+
+
 
 
     private static void connectToFirstVoiceChannel(AudioManager audioManager) {
