@@ -22,45 +22,50 @@ public class BotInfoCommand extends ListenerAdapter {
 				switch (message.toLowerCase()) {
 					case "!markdown" -> channel.sendMessage(embeds.texts(Color.BLACK, "> Markdown Commands",
 							"Type the Following Commands to know more", "`!bold` `\n!italic` `\n!underline` `\n!bolditalic` "
-									+ "`\n!underlineitalic` `\n!underlinebold` `\n!unerlinebolditalic` `\n!strikethrough`",
+									+ "`\n!underlineitalic` `\n!underlinebold` `\n!unerlinebolditalic` `\n!strikethrough \n!voice`",
 							true).build()).queue();
 					case "!bold" -> channel.sendMessage(embeds.textsEmbedMessage(Color.PINK,
 							"``` put '**' before and after your text```")
-					).queue(m -> m.delete().queueAfter(5, TimeUnit.SECONDS));
+					).queue();
 					case "!italic" -> channel.sendMessage(embeds.textsEmbedMessage(Color.CYAN,
 							"```put '* or _' before and after your text```")
-					).queue(m -> m.delete().queueAfter(5, TimeUnit.SECONDS));
+					).queue();
 					case "!underline" -> channel.sendMessage(embeds.textsEmbedMessage(Color.DARK_GRAY,
 							"```put  '__' before and after your text```")
-					).queue(m -> m.delete().queueAfter(5, TimeUnit.SECONDS));
+					).queue();
 					case "!bolditalic" -> channel.sendMessage(embeds.textsEmbedMessage(Color.ORANGE,
 							"```put  '***' before and after your text```")
-					).queue(m -> m.delete().queueAfter(5, TimeUnit.SECONDS));
+					).queue();
 					case "!underlineitalic" -> channel.sendMessage(embeds.textsEmbedMessage(Color.RED,
 							"```put  '__*' before and after your text```")
-					).queue(m -> m.delete().queueAfter(5, TimeUnit.SECONDS));
+					).queue();
 					case "!underbold" -> channel.sendMessage(embeds.textsEmbedMessage(Color.DARK_GRAY,
 							"```put  '__**' before and after your text```")
-					).queue(m -> m.delete().queueAfter(5, TimeUnit.SECONDS));
+					).queue();
 					case "!underlinebolditalic" -> channel.sendMessage(embeds.textsEmbedMessage(Color.DARK_GRAY,
-							"```put  '__***' before and after your text```")
-
-							).queue(m -> m.delete().queueAfter(5, TimeUnit.SECONDS));
-				}
-/*				else if (message.equalsIgnoreCase("!help")) {
-					channel.sendMessage(embedBuilders.embeds.texts(Color.WHITE, "> Useful Commands",
+							"```put  '__***' before and after your text```"));
+				
+						case "!voice"->
+					channel.sendMessage(embeds.texts(Color.black, ">  Commands for Voice channel",
 							"Type the Following Commands",
-							"`!disconnect me` - disconnect yourself in the voice channel using the bot`",
+							"`!disconnect me - voice command to disconnect" +
+							"\n!move room - move another room`",
 							false).build()).queue();
+						
+							case "!help"->
+							channel.sendMessage(embeds.texts(Color.black, "> Helpful Command ",
+									"Type the Following Commands"
+									,"`help command`",
+									false).build()).queue();
 
+					// ).queue(m -> m.delete().queueAfter(5, TimeUnit.SECONDS));
+					// case "!help" -> channel.sendMessage(embeds.texts(Color.WHITE, "> Useful Commands", "Type the Following Commands",
+					// 		"dds", false).build()).queue();
 
-					).queue(m -> m.delete().queueAfter(5, TimeUnit.SECONDS));
-					case "!help" -> channel.sendMessage(embeds.texts(Color.WHITE, "> Useful Commands", "Type the Following Commands",
-							"dds", false).build()).queue();
-
-*/				}
+			}
 
 			
+}
 }	
 
 	
