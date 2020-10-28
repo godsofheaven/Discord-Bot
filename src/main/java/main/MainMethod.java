@@ -24,11 +24,12 @@ public class MainMethod {
 		Collection<GatewayIntent> intents = new ArrayList<>();
 
 			intents.add(GatewayIntent.GUILD_MEMBERS);
+			intents.add(GatewayIntent.GUILD_MESSAGE_TYPING);
 			intents.add(GatewayIntent.GUILD_MESSAGES);
 			intents.add(GatewayIntent.GUILD_VOICE_STATES);
 			intents.add(GatewayIntent.GUILD_EMOJIS);
 
-		JDA jda = JDABuilder.createDefault("NzU3NTE3MzcwNjE2MTg0ODgz.X2hjBw.R1cFw0-6Rb0L21OH5VZzeFKeV74", intents)
+		JDA jda = JDABuilder.createDefault("YOUR_TOKEN_HERE", intents)
 				.setStatus(OnlineStatus.DO_NOT_DISTURB).build();
 
 		jda.addEventListener(new PingCommand());
