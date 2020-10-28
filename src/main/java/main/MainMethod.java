@@ -28,7 +28,7 @@ public class MainMethod {
 			intents.add(GatewayIntent.GUILD_VOICE_STATES);
 			intents.add(GatewayIntent.GUILD_EMOJIS);
 
-		JDA jda = JDABuilder.createDefault("NzcwMzM1MjE0MjQ0MzMxNTMw.X5cEkw.QEr54iPwW2__40BrHw3pIPJoHeg", intents).setStatus(OnlineStatus.DO_NOT_DISTURB).build();
+		JDA jda = JDABuilder.createDefault("", intents).setStatus(OnlineStatus.DO_NOT_DISTURB).build();
 
 
 		jda.addEventListener(new MoveMember());
