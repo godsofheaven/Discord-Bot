@@ -37,11 +37,6 @@
 			<url>https://jcenter.bintray.com</url>
 		</repository>
 
-		<repository>
-			<id>central</id>
-			<name>jcenter-bintray</name>
-			<url>https://jcenter.bintray.com</url>
-		</repository>1
 	</repositories>
 
 </project>

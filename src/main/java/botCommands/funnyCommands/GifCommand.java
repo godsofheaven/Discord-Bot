@@ -11,7 +11,8 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import java.util.List;
 
 public class GifCommand extends BaseCommand {
-    static String API_KEY = "token";
+    static String API_KEY = "";
+    private CommandCategory category;
 
     Giphy giphy = new Giphy(API_KEY);
 
@@ -21,23 +22,24 @@ public class GifCommand extends BaseCommand {
     }
 
     @Override
-    public void run(GuildMessageReceivedEvent e, List<String> args) {
+    public String run() {
 
+        return null;
     }
 
     @Override
     public String getName() {
-        return null;
+        return "Gif";
     }
 
     @Override
     public String getUsage(Guild guild) {
-        return null;
+        return getName().toLowerCase();
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return "Returns a random gif";
     }
 
     @Override
@@ -47,7 +49,7 @@ public class GifCommand extends BaseCommand {
 
     @Override
     public CommandCategory getParentCategory() {
-        return null;
+        return category;
     }
 }
 

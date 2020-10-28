@@ -115,11 +115,7 @@ public class YoutubeSearch extends ListenerAdapter {
     private void play(Guild guild, GuildMusicManager musicManager, AudioTrack track) {
         connectToFirstVoiceChannel(guild.getAudioManager());
 
-        try {
-            musicManager.scheduler.queue(track);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        musicManager.scheduler.queue(track);
         musicManager.scheduler.resumeTrack();
 
     }
