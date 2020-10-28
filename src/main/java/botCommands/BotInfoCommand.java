@@ -1,6 +1,8 @@
 package botCommands;
 
-import java.awt.Color;import java.util.concurrent.TimeUnit;
+import java.awt.Color;
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 import embedBuilders.EmbedCommands;
 import net.dv8tion.jda.api.entities.MessageChannel;
@@ -26,31 +28,31 @@ public class BotInfoCommand extends ListenerAdapter {
 							true).build()).queue();
 					case "!bold" -> channel.sendMessage(embeds.textsEmbedMessage(Color.PINK,
 							"``` put '**' before and after your text```")
-					).queue();
+					).queue(m->m.delete().queueAfter(5, TimeUnit.SECONDS));
 					case "!italic" -> channel.sendMessage(embeds.textsEmbedMessage(Color.CYAN,
 							"```put '* or _' before and after your text```")
-					).queue();
+					).queue(m->m.delete().queueAfter(5, TimeUnit.SECONDS));
 					case "!underline" -> channel.sendMessage(embeds.textsEmbedMessage(Color.DARK_GRAY,
 							"```put  '__' before and after your text```")
-					).queue();
+					).queue(m->m.delete().queueAfter(5, TimeUnit.SECONDS));
 					case "!bolditalic" -> channel.sendMessage(embeds.textsEmbedMessage(Color.ORANGE,
 							"```put  '***' before and after your text```")
-					).queue();
+					).queue(m->m.delete().queueAfter(5, TimeUnit.SECONDS));
 					case "!underlineitalic" -> channel.sendMessage(embeds.textsEmbedMessage(Color.RED,
 							"```put  '__*' before and after your text```")
-					).queue();
+					).queue(m->m.delete().queueAfter(5, TimeUnit.SECONDS));
 					case "!underbold" -> channel.sendMessage(embeds.textsEmbedMessage(Color.DARK_GRAY,
 							"```put  '__**' before and after your text```")
-					).queue();
+					).queue(m->m.delete().queueAfter(5, TimeUnit.SECONDS));
 					case "!underlinebolditalic" -> channel.sendMessage(embeds.textsEmbedMessage(Color.DARK_GRAY,
-							"```put  '__***' before and after your text```"));
+							"```put  '__***' before and after your text```")).queue(m->m.delete().queueAfter(5, TimeUnit.SECONDS));
 				
 						case "!voice"->
 					channel.sendMessage(embeds.texts(Color.black, ">  Commands for Voice channel",
 							"Type the Following Commands",
 							"`!disconnect me - voice command to disconnect" +
-							"\n!move room - move another room`",
-							false).build()).queue();
+							"\n!move (voicechannelname)`",
+							false).build()).queue(m->m.delete().queueAfter(5, TimeUnit.SECONDS));
 						
 							case "!help"->
 							channel.sendMessage(embeds.texts(Color.black, "> Helpful Command ",
