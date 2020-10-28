@@ -8,8 +8,9 @@ import java.util.List;
 public abstract class BaseCommand {
     /**
      * Executes on command execution
+     * @return
      */
-    public abstract void run(GuildMessageReceivedEvent e, List<String> args);
+    public abstract String run();
 
     /**
      * Returns command name

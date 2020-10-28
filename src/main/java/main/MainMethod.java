@@ -9,6 +9,7 @@ import botCommands.botMemberVoiceCommands.DisconnectMember;
 import botCommands.botMemberJoin.MemberJoinLeave;
 import botCommands.botMemberVoiceCommands.MoveMember;
 import botCommands.botProfanityFilter.ProfanityFilter;
+import embedBuilders.EmbedCommands;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -27,7 +28,7 @@ public class MainMethod {
 			intents.add(GatewayIntent.GUILD_VOICE_STATES);
 			intents.add(GatewayIntent.GUILD_EMOJIS);
 
-		JDA jda = JDABuilder.createDefault("YOUR_TOKEN", intents).setStatus(OnlineStatus.DO_NOT_DISTURB).build();
+		JDA jda = JDABuilder.createDefault("NzcwMzM1MjE0MjQ0MzMxNTMw.X5cEkw.QEr54iPwW2__40BrHw3pIPJoHeg", intents).setStatus(OnlineStatus.DO_NOT_DISTURB).build();
 
 
 		jda.addEventListener(new MoveMember());
@@ -35,7 +36,7 @@ public class MainMethod {
 		jda.addEventListener(new MemberJoinLeave());
 		jda.addEventListener(new BotInfoCommand());
 		jda.addEventListener(new ProfanityFilter());
-		jda.addEventListener(new Embed());
+		//jda.addEventListener(new EmbedCommands());
 	}
 
 

@@ -1,8 +1,13 @@
 package botCommands;
 
-import java.awt.Color;import java.util.concurrent.TimeUnit;
+import java.awt.Color;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
+import at.mukprojects.giphy4j.exception.GiphyException;
+import botCommands.funnyCommands.RollCommand;
 import embedBuilders.EmbedCommands;
+import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -44,8 +49,18 @@ public class BotInfoCommand extends ListenerAdapter {
 					).queue(m -> m.delete().queueAfter(5, TimeUnit.SECONDS));
 					case "!underlinebolditalic" -> channel.sendMessage(embeds.textsEmbedMessage(Color.DARK_GRAY,
 							"```put  '__***' before and after your text```")
-
-							).queue(m -> m.delete().queueAfter(5, TimeUnit.SECONDS));
+					).queue(m -> m.delete().queueAfter(5, TimeUnit.SECONDS));
+					case "!gif" ->{
+						try {
+							channel.sendMessage(embeds.gifTextMessage().GifCommand(message))
+									.queue(m -> m.delete().queueAfter(5, TimeUnit.SECONDS));
+						} catch (GiphyException e) {
+							e.printStackTrace();
+						}
+					}
+					case "!roll" ->{
+						channel.sendMessage(embeds.textString(embeds.rollDice())).queue();
+					}
 				}
 /*				else if (message.equalsIgnoreCase("!help")) {
 					channel.sendMessage(embedBuilders.embeds.texts(Color.WHITE, "> Useful Commands",
