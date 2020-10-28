@@ -1,17 +1,13 @@
 package lavaPlayer;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioLoadResultHandler;
-import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
-import com.sedmelluq.discord.lavaplayer.source.youtube.DefaultYoutubeLinkRouter;
 import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager;
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
-import com.sedmelluq.discord.lavaplayer.track.AudioTrackEndReason;
-import com.sedmelluq.discord.lavaplayer.track.AudioTrackState;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.entities.VoiceChannel;
@@ -22,18 +18,15 @@ import net.dv8tion.jda.api.managers.AudioManager;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LavaPlayerMain extends ListenerAdapter {
+public class YoutubeSearch extends ListenerAdapter {
 
     private final AudioPlayerManager playerManager;
     private final Map<Long, GuildMusicManager> musicManagers;
-    private final DefaultYoutubeLinkRouter youtubeLinkRouter;
 
 
-
-    public LavaPlayerMain() {
+    public YoutubeSearch() {
         this.musicManagers = new HashMap<>();
         this.playerManager = new DefaultAudioPlayerManager();
-        this.youtubeLinkRouter = new DefaultYoutubeLinkRouter();
         playerManager.registerSourceManager(new YoutubeAudioSourceManager());
         AudioSourceManagers.registerRemoteSources(playerManager);
         AudioSourceManagers.registerLocalSource(playerManager);
@@ -71,10 +64,10 @@ public class LavaPlayerMain extends ListenerAdapter {
               resumeTrack(event.getChannel());
         }
           else if ("~stop".equals(command[0]) && "music".equals(command[1])) {
-                stopMusic(event.getChannel(),event.getGuild(), event.getGuild().getAudioManager());
+                stopMusic(event.getChannel(), event.getGuild().getAudioManager());
         }
           else if ("~stop".equals(command[0]) && "track".equals(command[1])) {
-                stopTrack(event.getChannel(), event.getGuild(), event.getGuild().getAudioManager());
+                stopTrack(event.getChannel());
         }
 
         super.onGuildMessageReceived(event);
@@ -122,7 +115,11 @@ public class LavaPlayerMain extends ListenerAdapter {
     private void play(Guild guild, GuildMusicManager musicManager, AudioTrack track) {
         connectToFirstVoiceChannel(guild.getAudioManager());
 
-        musicManager.scheduler.queue(track);
+        try {
+            musicManager.scheduler.queue(track);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         musicManager.scheduler.resumeTrack();
 
     }
@@ -148,7 +145,7 @@ public class LavaPlayerMain extends ListenerAdapter {
         channel.sendMessage("Resumed paused track").queue();
 
     }
-    private void stopTrack (TextChannel channel,Guild guild, AudioManager manager) {
+    private void stopTrack (TextChannel channel) {
         GuildMusicManager musicManager = getGuildAudioPlayer(channel.getGuild());
         musicManager.scheduler.stopTrack();
 
@@ -157,7 +154,7 @@ public class LavaPlayerMain extends ListenerAdapter {
     }
 
 
-    private void stopMusic (TextChannel channel,Guild guild, AudioManager manager) {
+    private void stopMusic (TextChannel channel, AudioManager manager) {
         GuildMusicManager musicManager = getGuildAudioPlayer(channel.getGuild());
         musicManager.scheduler.stopTrack();
         manager.closeAudioConnection();

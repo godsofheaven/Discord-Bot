@@ -4,8 +4,7 @@ import botCommands.BotInfoCommand;
 import botCommands.botMemberJoin.MemberJoinLeave;
 import botCommands.botMemberVoiceCommands.DisconnectMember;
 import botCommands.botMemberVoiceCommands.MoveMember;
-import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
-import lavaPlayer.LavaPlayerMain;
+import lavaPlayer.YoutubeSearch;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -19,7 +18,7 @@ public class MainMethod {
 
 
     public static void main(String[] args) throws LoginException {
-		Collection<GatewayIntent> intents = new ArrayList<GatewayIntent>();
+		Collection<GatewayIntent> intents = new ArrayList<>();
 
 			intents.add(GatewayIntent.GUILD_MEMBERS);
 			intents.add(GatewayIntent.GUILD_MESSAGE_TYPING);
@@ -35,7 +34,7 @@ public class MainMethod {
 		jda.addEventListener(new DisconnectMember());
 		jda.addEventListener(new MemberJoinLeave());
 		jda.addEventListener(new BotInfoCommand());
-		jda.addEventListener(new LavaPlayerMain());
+		jda.addEventListener(new YoutubeSearch());
 	}
 
 
