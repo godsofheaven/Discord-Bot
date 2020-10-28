@@ -2,7 +2,7 @@ package botCommands.funnyCommands;
 
 import botCommands.BaseCommand;
 import botCommands.CommandCategory;
-import botCommands.EmbedCommands;
+import embedBuilders.EmbedCommands;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
