@@ -5,10 +5,9 @@
   <version>0.0.1-SNAPSHOT</version>
 
 	<properties>
-	<maven.compiler.source>14</maven.compiler.source>
-	<maven.compiler.target>14</maven.compiler.target>
+		<maven.compiler.source>14</maven.compiler.source>
+		<maven.compiler.target>14</maven.compiler.target>
 	</properties>
-	
 	
 	<dependencies>
 		<dependency>
@@ -23,10 +22,13 @@
 			<version>1.3.53</version>
 		</dependency>
 
+		<dependency>
+			<groupId>at.mukprojects</groupId>
+			<artifactId>giphy4j</artifactId>
+			<version>1.0.1</version>
+		</dependency>
 
-
-
-	</dependencies>
+    </dependencies>
 	
 	<repositories>
 		<repository>
@@ -39,22 +41,7 @@
 			<id>central</id>
 			<name>jcenter-bintray</name>
 			<url>https://jcenter.bintray.com</url>
-		</repository>
+		</repository>1
 	</repositories>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 </project>
-
-

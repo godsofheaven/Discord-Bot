@@ -1,10 +1,13 @@
 package main;
 
 import botCommands.BotInfoCommand;
-import botCommands.botMemberJoin.MemberJoinLeave;
+import botCommands.PingCommand;
 import botCommands.botMemberVoiceCommands.DisconnectMember;
+import botCommands.botMemberJoin.MemberJoinLeave;
 import botCommands.botMemberVoiceCommands.MoveMember;
 import lavaPlayer.YoutubeSearch;
+import botCommands.botProfanityFilter.ProfanityFilter;
+import embedBuilders.EmbedCommands;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -29,12 +32,14 @@ public class MainMethod {
 		JDA jda = JDABuilder.createDefault("YOUR_TOKEN_HERE", intents)
 				.setStatus(OnlineStatus.DO_NOT_DISTURB).build();
 
-
+		jda.addEventListener(new PingCommand());
 		jda.addEventListener(new MoveMember());
 		jda.addEventListener(new DisconnectMember());
 		jda.addEventListener(new MemberJoinLeave());
 		jda.addEventListener(new BotInfoCommand());
 		jda.addEventListener(new YoutubeSearch());
+		jda.addEventListener(new ProfanityFilter());
+		jda.addEventListener(new EmbedCommands());
 	}
 
 
