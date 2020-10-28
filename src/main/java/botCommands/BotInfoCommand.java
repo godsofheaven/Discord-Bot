@@ -58,6 +58,9 @@ public class BotInfoCommand extends ListenerAdapter {
 				case "!roll" ->{
 					channel.sendMessage(embeds.textString(embeds.rollDice())).queue();
 				}
+				case "!8ball" ->{
+					channel.sendMessage(embeds.textString(embeds.eightBall())).queue();
+				}
 			}
 	/*				else if (message.equalsIgnoreCase("!help")) {
 						channel.sendMessage(embedBuilders.embeds.texts(Color.WHITE, "> Useful Commands",

@@ -3,6 +3,7 @@ package embedBuilders;
 import java.awt.Color;
 import java.util.List;
 
+import botCommands.funnyCommands.EightballCommand;
 import botCommands.funnyCommands.GifCommand;
 import botCommands.funnyCommands.RollCommand;
 import main.MainMethod;
@@ -43,6 +44,11 @@ public class EmbedCommands {
 			embed.clearFields();
 			return new RollCommand().run();
 		}
+
+		public String eightBall(){
+			embed.clearFields();
+			return new EightballCommand().run();
+	}
 
 		public static EmbedBuilder noFieldMessageEmbed(String name, List<String> msgs, Color color, MessageChannel channel) {
 			EmbedBuilder builder = new EmbedBuilder();
