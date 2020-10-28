@@ -1,19 +1,14 @@
 package embedBuilders;
 
-<<<<<<< HEAD
-=======
 import java.awt.Color;
 import java.util.List;
 
 import botCommands.funnyCommands.GifCommand;
 import main.MainMethod;
->>>>>>> 0abf7303b3b0a54215c91c1744bb3630ded30d71
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.entities.TextChannel;
-
-import java.awt.*;
 
 public class EmbedCommands {
 
