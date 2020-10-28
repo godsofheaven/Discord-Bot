@@ -22,7 +22,6 @@
 			<version>1.3.53</version>
 		</dependency>
 
-<<<<<<< HEAD
 <dependency>
 		<groupId>at.mukprojects</groupId>
 		<artifactId>giphy4j</artifactId>
@@ -30,22 +29,8 @@
 	</dependency>
 
 	</dependencies>
-=======
-		<dependency>
-			<groupId>at.mukprojects</groupId>
-			<artifactId>giphy4j</artifactId>
-			<version>1.0.1</version>
-		</dependency>
-
-    </dependencies>
->>>>>>> upstream/main
 	
-	<repositories>
-		<repository>
-			<id>jcenter</id>
-			<name>jcenter-bintray</name>
-			<url>https://jcenter.bintray.com</url>
-		</repository>
+
 
 		<repository>
 			<id>central</id>
