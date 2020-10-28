@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 import javax.security.auth.login.LoginException;
 import botCommands.BotInfoCommand;
+import botCommands.PingCommand;
 import botCommands.botMemberVoiceCommands.DisconnectMember;
 import botCommands.botMemberJoin.MemberJoinLeave;
 import botCommands.botMemberVoiceCommands.MoveMember;
@@ -30,7 +31,7 @@ public class MainMethod {
 
 		JDA jda = JDABuilder.createDefault("YOUR_TOKEN", intents).setStatus(OnlineStatus.DO_NOT_DISTURB).build();
 
-
+		jda.addEventListener(new PingCommand());
 		jda.addEventListener(new MoveMember());
 		jda.addEventListener(new DisconnectMember());
 		jda.addEventListener(new MemberJoinLeave());
