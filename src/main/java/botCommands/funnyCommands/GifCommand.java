@@ -12,7 +12,7 @@ import at.mukprojects.giphy4j.entity.search.SearchRandom;
 import at.mukprojects.giphy4j.exception.GiphyException;
 
 public class GifCommand extends BaseCommand {
-    static String API_KEY = "dc6zaTOxFJmzCdc6zaTOxFJmzC";
+    static String API_KEY = "your_token";
 
     Giphy giphy = new Giphy(API_KEY);
 
