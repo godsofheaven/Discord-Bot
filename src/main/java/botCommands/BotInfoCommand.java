@@ -1,13 +1,19 @@
 package botCommands;
 
+<<<<<<< HEAD
 import java.awt.Color;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
+=======
+>>>>>>> upstream/main
 import embedBuilders.EmbedCommands;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+
+import java.awt.*;
+import java.util.concurrent.TimeUnit;
 
 public class BotInfoCommand extends ListenerAdapter {
 			static EmbedCommands embeds = new EmbedCommands();

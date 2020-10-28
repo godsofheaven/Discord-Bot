@@ -2,7 +2,11 @@ package botCommands.funnyCommands;
 
 import botCommands.BaseCommand;
 import botCommands.CommandCategory;
+<<<<<<< HEAD
 import embedBuilders.*;
+=======
+import embedBuilders.EmbedCommands;
+>>>>>>> upstream/main
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
