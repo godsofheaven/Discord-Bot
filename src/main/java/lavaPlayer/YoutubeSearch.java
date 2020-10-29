@@ -1,9 +1,6 @@
 package lavaPlayer;
 
-import com.sedmelluq.discord.lavaplayer.player.AudioLoadResultHandler;
-import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
-import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
-import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
+import com.sedmelluq.discord.lavaplayer.player.*;
 import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
 import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager;
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
@@ -21,9 +18,9 @@ import java.util.Map;
 
 public class YoutubeSearch extends ListenerAdapter {
 
-    private final AudioPlayerManager playerManager;
+    private final DefaultAudioPlayerManager playerManager;
     private final Map<Long, GuildMusicManager> musicManagers;
-    private final AudioPlayer player;
+    private final DefaultAudioPlayer player;
 
 
     public YoutubeSearch() {
@@ -32,7 +29,7 @@ public class YoutubeSearch extends ListenerAdapter {
         playerManager.registerSourceManager(new YoutubeAudioSourceManager());
         AudioSourceManagers.registerRemoteSources(playerManager);
         AudioSourceManagers.registerLocalSource(playerManager);
-        this.player = playerManager.createPlayer();
+        this.player = new DefaultAudioPlayer(playerManager);
 
     }
 
@@ -41,7 +38,7 @@ public class YoutubeSearch extends ListenerAdapter {
         GuildMusicManager musicManager = musicManagers.get(guildId);
 
         if (musicManager == null) {
-            musicManager = new GuildMusicManager(playerManager);
+            musicManager = new GuildMusicManager(player);
             musicManagers.put(guildId, musicManager);
         }
 
@@ -175,9 +172,11 @@ public class YoutubeSearch extends ListenerAdapter {
 
     private static void connectToFirstVoiceChannel(AudioManager audioManager) {
         if (!audioManager.isConnected()) {
-            VoiceChannel musicRoom = audioManager.getGuild().getVoiceChannelById("770847474700779541");
-            audioManager.openAudioConnection(musicRoom);
-        }
+           for (VoiceChannel voiceChannel: audioManager.getGuild().getVoiceChannels()) {
+               if (!audioManager.isConnected())
+                 audioManager.openAudioConnection(voiceChannel);
+           }
+       }
     }
 }
 
