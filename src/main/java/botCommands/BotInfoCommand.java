@@ -24,7 +24,8 @@ public class BotInfoCommand extends ListenerAdapter {
 			switch (message.toLowerCase()) {
 				case "!markdown" -> channel.sendMessage(embeds.texts(Color.BLACK, "> Markdown Commands",
 						"Type the Following Commands to know more", "`!bold` `\n!italic` `\n!underline` `\n!bolditalic` "
-								+ "`\n!underlineitalic` `\n!underlinebold` `\n!unerlinebolditalic` `\n!strikethrough`",
+								+ "`\n!underlineitalic` `\n!underlinebold` `\n!unerlinebolditalic` `\n!strikethrough` `\n!gif` `\n!roll` " +
+								" `\n!8ball` `\n!time`",
 						true).build()).queue();
 				case "!bold" -> channel.sendMessage(embeds.textsEmbedMessage(Color.PINK,
 						"``` put '**' before and after your text```")
@@ -60,6 +61,9 @@ public class BotInfoCommand extends ListenerAdapter {
 				}
 				case "!8ball" ->{
 					channel.sendMessage(embeds.textString(embeds.eightBall())).queue();
+				}
+				case "!time" ->{
+					channel.sendMessage(embeds.textString(embeds.time())).queue();
 				}
 			}
 	/*				else if (message.equalsIgnoreCase("!help")) {
