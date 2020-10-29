@@ -1,20 +1,23 @@
 package lavaPlayer;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
+import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.event.AudioEventAdapter;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackEndReason;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class TrackScheduler extends AudioEventAdapter {
-    private final AudioPlayer player;
+    private final DefaultAudioPlayer player;
     private final BlockingQueue<AudioTrack> queue;
 
     /**
      * @param player The audio player this scheduler uses
      */
-    public TrackScheduler(AudioPlayer player) {
+    public TrackScheduler(DefaultAudioPlayer player) {
         this.player = player;
         this.queue = new LinkedBlockingQueue<>();
 
@@ -34,11 +37,13 @@ public class TrackScheduler extends AudioEventAdapter {
         // track goes to the queue instead.
         if (!player.startTrack(track, true)) {
             queue.offer(track);
+            System.out.println(queue.toString());
 
 
 
 
         }
+
 
 
     }
@@ -67,10 +72,17 @@ public class TrackScheduler extends AudioEventAdapter {
         player.setPaused(false);
     }
 
+    @Override
+    public void onTrackStart(AudioPlayer player, AudioTrack track) {
+        super.onTrackStart(player, track);
+        String trackInfo = track.getInfo().toString();
+        Logger log = LoggerFactory.getLogger(TrackScheduler.class);
+    }
+
     public void stopTrack() {
         //stop track
         player.stopTrack();
-        player.startTrack(queue.poll(), false);
+        player.playTrack(queue.poll());
     }
 
 
