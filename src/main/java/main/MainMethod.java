@@ -39,7 +39,7 @@ public class MainMethod {
 		jda.addEventListener(new BotInfoCommand());
 		jda.addEventListener(new YoutubeSearch());
 		jda.addEventListener(new ProfanityFilter());
-		//jda.addEventListener(new EmbedCommands());
+		jda.addEventListener(new EmbedCommands());
 	}
 
 

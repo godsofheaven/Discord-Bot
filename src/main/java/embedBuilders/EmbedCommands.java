@@ -11,10 +11,6 @@ import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.entities.TextChannel;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> f3a8657833078d551914783302a18be117ed4fa6
 public class EmbedCommands {
 
 		static EmbedBuilder embed = new EmbedBuilder();
