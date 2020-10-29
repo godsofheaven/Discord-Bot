@@ -6,6 +6,7 @@ import java.util.List;
 import botCommands.funnyCommands.EightballCommand;
 import botCommands.funnyCommands.GifCommand;
 import botCommands.funnyCommands.RollCommand;
+import botCommands.funnyCommands.TimeCommand;
 import main.MainMethod;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageChannel;
@@ -48,7 +49,12 @@ public class EmbedCommands {
 		public String eightBall(){
 			embed.clearFields();
 			return new EightballCommand().run();
-	}
+		}
+
+		public String time(){
+			embed.clearFields();
+			return new TimeCommand().run();
+		}
 
 		public static EmbedBuilder noFieldMessageEmbed(String name, List<String> msgs, Color color, MessageChannel channel) {
 			EmbedBuilder builder = new EmbedBuilder();
