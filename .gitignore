@@ -6,4 +6,5 @@ bin/
 .idea/
 bot.discord.iml
 .godsofheaven_basic_bot_template
+.idea/libraries/
 
