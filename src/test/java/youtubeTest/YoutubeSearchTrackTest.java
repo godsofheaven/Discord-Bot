@@ -1,11 +1,12 @@
 package youtubeTest;
 
 import lavaPlayer.YoutubeSearch;
+import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
 
 public class YoutubeSearchTrackTest {
 
+        @Before
         private void setup () {
             YoutubeSearch youtubeSearchAudio = new YoutubeSearch();
         }
@@ -14,7 +15,7 @@ public class YoutubeSearchTrackTest {
 
         @Test
         public void youtubeTest () {
-             
+             assertEquals()
         }
 
 }
