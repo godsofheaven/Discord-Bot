@@ -54,7 +54,12 @@ public class YoutubeSearch extends ListenerAdapter {
         if ("~playyt".equals(command[0]) && command.length == 2) {
             loadAndPlay(event.getChannel(), "ytsearch:" + command[1]);
             //player.setVolume(//i);
-        } else if ("~skip".equals(command[0])) {
+        }
+        else if ("~playsc".equals(command[0]) && command.length == 2) {
+            loadAndPlay(event.getChannel(), "scsearch:" + command[1]);
+        }
+
+        else if ("~skip".equals(command[0])) {
             skipTrack(event.getChannel());
         }
           else if ("~pause".equals(command[0])) {
@@ -172,13 +177,12 @@ public class YoutubeSearch extends ListenerAdapter {
 
     private static void connectToFirstVoiceChannel(AudioManager audioManager) {
         if (!audioManager.isConnected()) {
-           for (VoiceChannel voiceChannel: audioManager.getGuild().getVoiceChannels()) {
-               if (!audioManager.isConnected())
+            VoiceChannel voiceChannel = audioManager.getGuild().getVoiceChannelById("770847474700779541");
                  audioManager.openAudioConnection(voiceChannel);
            }
        }
     }
-}
+
 
 
 
