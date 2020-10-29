@@ -37,14 +37,13 @@ public class TrackScheduler extends AudioEventAdapter {
         // track goes to the queue instead.
         if (!player.startTrack(track, true)) {
             queue.offer(track);
+            System.out.println(queue.toString());
 
 
 
 
         }
-            else if (!(player.getPlayingTrack() == null )) {
-                queue.offer(track);
-        }
+
 
 
     }
