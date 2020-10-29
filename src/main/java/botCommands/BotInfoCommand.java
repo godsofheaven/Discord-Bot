@@ -65,6 +65,19 @@ public class BotInfoCommand extends ListenerAdapter {
 				case "!time" ->{
 					channel.sendMessage(embeds.textString(embeds.time())).queue();
 				}
+				
+				case "!voice"->
+				channel.sendMessage(embeds.texts(Color.black, ">  Commands for Voice channel",
+						"Type the Following Commands",
+						"`!disconnect me - voice command to disconnect" +
+						"\n!move (voicechannelname)`",
+						false).build()).queue(m->m.delete().queueAfter(5, TimeUnit.SECONDS));
+					
+						case "!help"->
+						channel.sendMessage(embeds.texts(Color.black, "> Helpful Command ",
+								"Type the Following Commands"
+								,"`help command`",
+								false).build()).queue();
 			}
 	/*				else if (message.equalsIgnoreCase("!help")) {
 						channel.sendMessage(embedBuilders.embeds.texts(Color.WHITE, "> Useful Commands",
