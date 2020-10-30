@@ -177,7 +177,7 @@ public class YoutubeSearch extends ListenerAdapter {
 
     private static void connectToFirstVoiceChannel(AudioManager audioManager) {
         if (!audioManager.isConnected()) {
-            VoiceChannel voiceChannel = audioManager.getGuild().getVoiceChannelById("770847474700779541");
+            for (VoiceChannel voiceChannel : audioManager.getGuild().getVoiceChannelCache())
                  audioManager.openAudioConnection(voiceChannel);
            }
        }
