@@ -5,6 +5,7 @@ import botCommands.PingCommand;
 import botCommands.botMemberVoiceCommands.DisconnectMember;
 import botCommands.botMemberJoin.MemberJoinLeave;
 import botCommands.botMemberVoiceCommands.MoveMember;
+import com.sedmelluq.discord.lavaplayer.jdaudp.NativeAudioSendFactory;
 import lavaPlayer.YoutubeSearch;
 import botCommands.botProfanityFilter.ProfanityFilter;
 import embedBuilders.EmbedCommands;
@@ -29,7 +30,7 @@ public class MainMethod {
 			intents.add(GatewayIntent.GUILD_VOICE_STATES);
 			intents.add(GatewayIntent.GUILD_EMOJIS);
 
-		JDA jda = JDABuilder.createDefault("NzU3NTE3MzcwNjE2MTg0ODgz.X2hjBw.Vbuvfca7xSqftvDg4e5wEAyaJm0", intents)
+		JDA jda = JDABuilder.createDefault("", intents).setAudioSendFactory(new NativeAudioSendFactory())
 				.setStatus(OnlineStatus.DO_NOT_DISTURB).build();
 
 		jda.addEventListener(new PingCommand());

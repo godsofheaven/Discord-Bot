@@ -28,6 +28,12 @@
 			<version>1.0.1</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.sedmelluq</groupId>
+			<artifactId>jda-nas</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+
     </dependencies>
 	
 	<repositories>
@@ -42,6 +48,8 @@
 			<name>jcenter-bintray</name>
 			<url>https://jcenter.bintray.com</url>
 		</repository>
+
+
 
 	</repositories>
 
