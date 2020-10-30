@@ -41,5 +41,8 @@
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-core:1.1.2" level="project" />
     <orderEntry type="library" name="Maven: junit:junit:4.8.1" level="project" />
     <orderEntry type="library" name="Maven: org.mockito:mockito-all:1.10.19" level="project" />
+    <orderEntry type="library" name="Maven: com.sedmelluq:jda-nas:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.sedmelluq:udp-queue:1.0.8" level="project" />
+    <orderEntry type="library" name="Maven: com.sedmelluq:lavaplayer-common:1.0.6" level="project" />
   </component>
 </module>
