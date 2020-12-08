@@ -1,4 +1,4 @@
-package botCommands.funnyCommands;
+package botCommands.Miscellaneous;
 
 import botCommands.BaseCommand;
 import botCommands.CommandCategory;
