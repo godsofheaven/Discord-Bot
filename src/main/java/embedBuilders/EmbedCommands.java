@@ -3,11 +3,9 @@ package embedBuilders;
 import java.awt.Color;
 import java.util.List;
 
-import botCommands.funnyCommands.EightballCommand;
-import botCommands.funnyCommands.GifCommand;
-import botCommands.funnyCommands.RollCommand;
-import botCommands.funnyCommands.TimeCommand;
+import botCommands.Miscellaneous.*;
 import main.MainMethod;
+import net.aksingh.owmjapis.api.APIException;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.MessageEmbed;
@@ -28,6 +26,11 @@ public class EmbedCommands {
 
 		}
 
+		public MessageEmbed textsDouble(Double value,Color color){
+			embed.clearFields();
+			return new EmbedBuilder(embed).setColor(color).build();
+		}
+
 		public String textString(String str){
 			embed.clearFields();
 			return str;
@@ -35,6 +38,11 @@ public class EmbedCommands {
 		public GifCommand gifTextMessage(){
 			embed.clearFields();
 			return new GifCommand();
+		}
+
+		public String getWeather(String city) throws APIException {
+			embed.clearFields();
+			return new WeatherCommand().getWeather(city);
 		}
 
 		public String rollDice(){

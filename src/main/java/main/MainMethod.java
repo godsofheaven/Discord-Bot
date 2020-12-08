@@ -12,16 +12,18 @@ import embedBuilders.EmbedCommands;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
+import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 
 import javax.security.auth.login.LoginException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.EventListener;
 
 public class MainMethod {
 
 
-    public static void main(String[] args) throws LoginException {
+    public static void main(String[] args)throws LoginException {
 		Collection<GatewayIntent> intents = new ArrayList<>();
 
 			intents.add(GatewayIntent.GUILD_MEMBERS);
@@ -31,7 +33,8 @@ public class MainMethod {
 			intents.add(GatewayIntent.GUILD_EMOJIS);
 
 		JDA jda = JDABuilder.createDefault("", intents).setAudioSendFactory(new NativeAudioSendFactory())
-				.setStatus(OnlineStatus.DO_NOT_DISTURB).build();
+				.setActivity(Activity.listening("Spotify"))
+				.setStatus(OnlineStatus.ONLINE).build();
 
 		jda.addEventListener(new PingCommand());
 		jda.addEventListener(new MoveMember());
@@ -42,6 +45,4 @@ public class MainMethod {
 		jda.addEventListener(new ProfanityFilter());
 		jda.addEventListener(new EmbedCommands());
 	}
-
-
 }

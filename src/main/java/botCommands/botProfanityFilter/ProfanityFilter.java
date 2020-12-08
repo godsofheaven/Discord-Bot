@@ -75,12 +75,13 @@ public class ProfanityFilter extends ListenerAdapter {
 
 
         String [] message = e.getMessage().getContentRaw().split(" ");
-        for (int i = 0; i < message.length; i++){
-            for (int b = 0; b<LIST_OF_CURSE_WORDS.length; b++)
-                if (message[i].equalsIgnoreCase(LIST_OF_CURSE_WORDS[b])){
+        for (String s : message) {
+            for (String list_of_curse_word : LIST_OF_CURSE_WORDS) {
+                if (s.equalsIgnoreCase(list_of_curse_word)) {
                     e.getMessage().delete().queue();
                     e.getChannel().sendMessage("Your message has been removed for containing inappropriate language").queue();
                 }
+            }
         }
     }
 }

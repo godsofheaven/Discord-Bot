@@ -19,6 +19,5 @@ public class DisconnectMember extends ListenerAdapter {
                 event.getChannel().sendMessage("YOU HAVE BEEN DISCONNECTED IN THE VOICE CHANNEL").queue(
                         m -> m.delete().queueAfter(10, TimeUnit.SECONDS));
             }
-
     }
 }

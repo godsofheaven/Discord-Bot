@@ -1,13 +1,9 @@
-package botCommands.funnyCommands;
+package botCommands.Miscellaneous;
 
 import botCommands.BaseCommand;
 import botCommands.CommandCategory;
-import embedBuilders.EmbedCommands;
 import net.dv8tion.jda.api.entities.Guild;
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import java.util.regex.Pattern;
 

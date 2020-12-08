@@ -1,20 +1,17 @@
-package botCommands.funnyCommands;
+package botCommands.Miscellaneous;
 
 import botCommands.BaseCommand;
 import botCommands.CommandCategory;
 import net.dv8tion.jda.api.entities.Guild;
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
-
-import java.util.List;
 
 import at.mukprojects.giphy4j.Giphy;
 import at.mukprojects.giphy4j.entity.search.SearchRandom;
 import at.mukprojects.giphy4j.exception.GiphyException;
 
 public class GifCommand extends BaseCommand {
-    static String API_KEY = "your_token";
-CommandCategory category;
-    Giphy giphy = new Giphy(API_KEY);
+    //https://developers.giphy.com/dashboard/
+    CommandCategory category;
+    Giphy giphy = new Giphy("API_KEY");
 
     public String GifCommand(String message) throws GiphyException {
         SearchRandom giphyRandom = giphy.searchRandom(message);
@@ -23,7 +20,6 @@ CommandCategory category;
 
     @Override
     public String run() {
-
         return null;
     }
 

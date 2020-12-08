@@ -2,7 +2,9 @@ package botCommands;
 
 import at.mukprojects.giphy4j.exception.GiphyException;
 import embedBuilders.EmbedCommands;
+import net.aksingh.owmjapis.api.APIException;
 import net.dv8tion.jda.api.entities.MessageChannel;
+import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
@@ -23,10 +25,32 @@ public class BotInfoCommand extends ListenerAdapter {
 
 			switch (message.toLowerCase()) {
 				case "!markdown" -> channel.sendMessage(embeds.texts(Color.BLACK, "> Markdown Commands",
-						"Type the Following Commands to know more", "`!bold` `\n!italic` `\n!underline` `\n!bolditalic` "
-								+ "`\n!underlineitalic` `\n!underlinebold` `\n!unerlinebolditalic` `\n!strikethrough` `\n!gif` `\n!roll` " +
-								" `\n!8ball` `\n!time`",
+						"Type the following commands to find out more", "`!bold` `\n!italic` `\n!underline` `\n!bolditalic` "
+								+ "`\n!underlineitalic` `\n!underlinebold` `\n!underlinebolditalic` `\n!strikethrough`",
 						true).build()).queue();
+
+				case "!voice"-> {
+					channel.sendMessage(embeds.texts(Color.BLACK, "Commands",
+							"Type the following commands",
+							"`!disconnect me - voice command to disconnect" +
+									"\n!move (voicechannelname)`",
+							false).build()).queue();
+				}
+
+				case "!miscellaneous"-> {
+					channel.sendMessage(embeds.texts(Color.BLACK, "Commands",
+							"Type the following commands",
+							"`!roll\n` `!8ball\n` `!time\n` `!gif\n`",
+							false).build()).queue();
+				}
+
+				case "!help"->{
+					channel.sendMessage(embeds.texts(Color.BLACK, "Commands",
+							"Type the following commands",
+							"`!markdown` `\n!miscellaneous` `\n!voice`",
+							false).build()).queue();
+				}
+
 				case "!bold" -> channel.sendMessage(embeds.textsEmbedMessage(Color.PINK,
 						"``` put '**' before and after your text```")
 				).queue(m -> m.delete().queueAfter(5, TimeUnit.SECONDS));
@@ -48,14 +72,6 @@ public class BotInfoCommand extends ListenerAdapter {
 				case "!underlinebolditalic" -> channel.sendMessage(embeds.textsEmbedMessage(Color.DARK_GRAY,
 						"```put  '__***' before and after your text```")
 				).queue(m -> m.delete().queueAfter(5, TimeUnit.SECONDS));
-				case "!gif" ->{
-					try {
-						channel.sendMessage(embeds.gifTextMessage().GifCommand(message))
-								.queue(m -> m.delete().queueAfter(5, TimeUnit.SECONDS));
-					} catch (GiphyException e) {
-						e.printStackTrace();
-					}
-				}
 				case "!roll" ->{
 					channel.sendMessage(embeds.textString(embeds.rollDice())).queue();
 				}
@@ -65,35 +81,8 @@ public class BotInfoCommand extends ListenerAdapter {
 				case "!time" ->{
 					channel.sendMessage(embeds.textString(embeds.time())).queue();
 				}
-				
-				case "!voice"->
-				channel.sendMessage(embeds.texts(Color.black, ">  Commands for Voice channel",
-						"Type the Following Commands",
-						"`!disconnect me - voice command to disconnect" +
-						"\n!move (voicechannelname)`",
-						false).build()).queue(m->m.delete().queueAfter(5, TimeUnit.SECONDS));
-					
-						case "!help"->
-						channel.sendMessage(embeds.texts(Color.black, "> Helpful Command ",
-								"Type the Following Commands"
-								,"`help command`",
-								false).build()).queue();
 			}
-	/*				else if (message.equalsIgnoreCase("!help")) {
-						channel.sendMessage(embedBuilders.embeds.texts(Color.WHITE, "> Useful Commands",
-								"Type the Following Commands",
-								"`!disconnect me` - disconnect yourself in the voice channel using the bot`",
-								false).build()).queue();
-
-
-						).queue(m -> m.delete().queueAfter(5, TimeUnit.SECONDS));
-						case "!help" -> channel.sendMessage(embeds.texts(Color.WHITE, "> Useful Commands", "Type the Following Commands",
-								"dds", false).build()).queue();
-
-	*/				}
-
-
-			
+	}
 }	
 
 	
